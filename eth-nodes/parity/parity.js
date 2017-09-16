@@ -1,4 +1,4 @@
-const approveTransactions = "/path/to/approveTransactions.js";
+const approveTransactions = "/path/to/approveTX.js";
 const fromAddress = "FROM ADDRESS";
 const ERC20Address = "ERC20 ADDRESS";
 const decimals = 18; //DECIMALS USED IN THE COIN.
