@@ -13,30 +13,30 @@ var contract = [{"constant":false,"inputs":[{"name":"_spender","type":"address"}
 contract = web3.eth.contract(contract).at(ERC20Address);
 
 module.exports = {
-	address: fromAddress,
+    address: fromAddress,
 
-	getLastAddress: () => {
-		return lastAddress;
-	},
+    getLastAddress: () => {
+        return lastAddress;
+    },
 
-	getLastAmount: () => {
-		return lastAmount;
-	},
-	
-	send: (to, amount, chatInterface) => {
-	    contract.transfer.sendTransaction(to, amount*Math.pow(10, decimals), {
-        	from: fromAddress,
+    getLastAmount: () => {
+        return lastAmount;
+    },
+    
+    send: (to, amount, chatInterface) => {
+        contract.transfer.sendTransaction(to, amount*Math.pow(10, decimals), {
+            from: fromAddress,
             gasPrice: 20000000000,
             gas: 150000
         }, (err, res) => {
             chatInterface.send("Success! https://etherscan.io/tx/" + res);
             if (err) {
-        		console.log(err);
-        	}
+                console.log(err);
+            }
         });
-	},
+    },
 
-	scheduler: new (require("events"))()
+    scheduler: new (require("events"))()
 };
 
 contract.Transfer().watch((err, res) => {
@@ -45,9 +45,9 @@ contract.Transfer().watch((err, res) => {
     }
   
     var tx = res.args;
-	if (tx.to.toLowerCase() !== fromAddress.toLowerCase()) {
-		return;
-	}
+    if (tx.to.toLowerCase() !== fromAddress.toLowerCase()) {
+        return;
+    }
 
     module.exports.scheduler.emit("deposit", tx.from, Math.floor(tx.value/Math.pow(10, decimals)));
 });
