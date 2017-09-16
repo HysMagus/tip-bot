@@ -1,8 +1,8 @@
-#Tip Bot
+# A Modular Tip Bot for ERC20s
 
 Modular tip bot made for multiple chat interfaces, databases, and Ethereum connections.
 
-Config edits to make are at the top of each file.
+Configuration variables to edit to make are at the top of each file.
 
 Discord is functional. Make a Bot User and add it.
 
