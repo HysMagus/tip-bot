@@ -15,10 +15,6 @@ module.exports = {
     },
     
     connect: () => {
-        client.login(token);
-    },
-
-    send: (msg) => {
         bot = new require("node-telegram-bot-api")(token, {polling: true});
         bot.onText(/!/, (msg) => {
             chatId = msg.chat.id;
@@ -27,6 +23,10 @@ module.exports = {
             sender = 
             module.exports.scheduler.emit("msg");
         });
+    },
+
+    send: (msg) => {
+        bot.sendMessage(msg.chat.id, msg, {reply_to_message_id: msg.message_id});
     },
 
     scheduler: new (require("events"))()
