@@ -1,5 +1,3 @@
-//NOT WORKING
-
 const token = "TELEGRAM TOKEN";
 
 var bot;
